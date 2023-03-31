@@ -1,8 +1,6 @@
 <?php 
     $email = $_POST['email'];
-    echo $email;
     $nickname = $_POST['nickname'];
-    echo $nickname;
     $password = $_POST['password'];
 
     $password = md5($password."randomString");

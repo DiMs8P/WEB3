@@ -4,7 +4,7 @@
 
     $password = md5($password."randomString");
 
-    $mysql = new mysqli('localhost', 'root', '', 'web3-db');
+    //$mysql = new mysqli('localhost', 'root', '', 'web3-db');
     $result = $mysql->query("SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password'");
     $user = $result->fetch_assoc();
     if ($user == null){

@@ -1,3 +1,4 @@
+<?php require "php/init.php"?>
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +24,7 @@
 <?php require "blocks/navbar.php" ?>   
 
 <main class="form-signin background rounded-4">
-  <form action="php/check.php" method="post">
+  <form action="php/account_signin.php" method="post">
     <img class="mb-4" src="img/game-console.png" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal text-white">Регистрация</h1>
 
