@@ -6,5 +6,4 @@
       echo "Не удалось подключиться к MySQL: " . $mysqli->connect_error;
       exit(1);
    }
-   require_once("functions.php");
 ?>

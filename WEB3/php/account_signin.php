@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once("functions.php");
     if (isset($_GET))
     {
@@ -12,7 +12,7 @@
                    $_SESSION['password'] = $_POST['password'];
                    header('Location: http://localhost/sites/WEB3/');
                 }
-            } 
+            }
             else{ ?>
                 <!-- Пользователь с таким именем уже существует -->
             <div id="error">

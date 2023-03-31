@@ -1,13 +1,11 @@
 <?php
-
+    require_once("init.php");
     function add_user($email, $nickname, $password)
     {
         global $mysqli;
 
         // Формируем запрос
-        $password = md5($password."randomString");
-
-        echo $password;
+        $password = md5($password."NegriPodori");
         if ($stmt = $mysqli->prepare("INSERT INTO `users` 
         (`email`, `nickname`, `password`) VALUES(?, ?, ?)")) {
             // Связываем параметры
@@ -21,10 +19,12 @@
         }
         return 0;
     }
-  
+
     function get_user($email, $password)
     {
         global $mysqli;
+
+        $password = md5($password."NegriPodori");
         // Формируем запрос
         if ($stmt = $mysqli->prepare("SELECT * FROM `users` WHERE `email` = ?")) {
             // Связываем параметры
@@ -32,16 +32,14 @@
             // Выполняем запрос
             $stmt->execute();
             // Связываем результаты
-            $stmt->bind_result($id, $email, $nickname, $password_hash);
-            if ($stmt->fetch())
-            {
-                if (password_verify($password, $password_hash))
-                    return array(
-                        'id' => $id,
-                        'email' => $email,
-                        'nickname' => $nickname
-                    );
-            }
+
+            if ($user = $stmt->get_result())
+                if ($user = $user->fetch_assoc())
+                {
+                    //TODO заменить на password_verify
+                    if ($password == $user["password"])
+                        return $user;
+                }
             // Возвращаем результат
             return 0;
         }
@@ -55,7 +53,4 @@
        unset($_SESSION["nickname"]);
        unset($_SESSION["password"]);
     }
- 
-
-   
 ?>
